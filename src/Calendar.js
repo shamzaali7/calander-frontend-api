@@ -73,7 +73,65 @@ class Calendar extends Component {
     events.push(task);
     this.setState({ events });
   }
+  updateEvent() {
+    const { title, desc, start, end, events, clickedEvent } = this.state;
+    const index = events.findIndex(event => event === clickedEvent);
+    const updatedEvent = events.slice();
+    updatedEvent[index].title = title;
+    updatedEvent[index].desc = desc;
+    updatedEvent[index].start = start;
+    updatedEvent[index].end = end;
+    this.setState({
+      events: updatedEvent
+    });
+  }
 
+  //  filters out specific event that is to be deleted and set that variable to state
+  deleteEvent() {
+    let updatedEvents = this.state.events.filter(
+      event => event["start"] !== this.state.start
+    );
+    this.setState({ events: updatedEvents });
+  }
+
+    render() {
+      console.log("render()");
+      const eventActions = [
+        <button
+          label="Cancel"
+          primary={false}
+          keyboardFocused={true}
+          onClick={this.handleClose}
+        />,
+        <button
+        label="Delete"
+        secondary={true}
+        keyboardFocused={true}
+        onClick={() => {
+          this.deleteEvent(), this.handleClose();
+        }}
+      />,
+      <button
+        label="Confirm Edit"
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleClose}
+        onClick={() => {
+          this.updateEvent(), this.handleClose();
+        }}
+      />
+    ];
+    const taskActions = [
+      <button label="Cancel" secondary={true} onClick={this.handleClose} />,
+      <button
+        label="Submit"
+        primary={true}
+        keyboardFocused={true}
+        onClick={() => {
+          this.setNewAppointment(), this.handleClose();
+        }}
+      />
+    ];
     return (
       <div id="Calendar">
         {/* react-big-calendar library utilized to render calendar*/}
