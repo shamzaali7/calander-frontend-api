@@ -66,7 +66,13 @@ class Calendar extends Component {
   handleEndTime = (event, date) => {
     this.setState({ end: date });
   };
-}
+  setNewTask() {
+    const { start, end, title, desc } = this.state;
+    let task = { title, start, end, desc };
+    let events = this.state.events.slice();
+    events.push(task);
+    this.setState({ events });
+  }
 
     return (
       <div id="Calendar">
