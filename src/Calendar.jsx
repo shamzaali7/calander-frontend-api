@@ -4,8 +4,6 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { toDate } from "date-fns";
 
-
-
 Calendar.momentLocalizer(moment);
 
 class TheCalendar extends Component {
@@ -71,12 +69,12 @@ class TheCalendar extends Component {
       console.log("render()");
       const eventActions = (
         <button label="Cancel"primary={false} keyboardFocused={true} onClick={this.handleClose}/>,
-        <button label="Delete" secondary={true} keyboardFocused={true} onClick={() => {this.deleteEvent(), this.handleClose();}}/>,
-        <button label="Confirm Edit" primary={true} keyboardFocused={true} onClick={() => {this.updateEvent(), this.handleClose();}}/> 
+        <button label="Delete" secondary={true} keyboardFocused={true} onClick={() => {this.deleteEvent();}}/>,
+        <button label="Confirm Edit" primary={true} keyboardFocused={true} onClick={() => {this.updateEvent();}}/> 
       )
         const taskActions = (
         <button label="Cancel" secondary={true} onClick={this.handleClose} />,
-        <button label="Submit" primary={true} keyboardFocused={true} onClick={() => {this.setNewTask(), this.handleClose();}}/>
+        <button label="Submit" primary={true} keyboardFocused={true} onClick={() => {this.handleClose();}}/>
       )
     return (
       <div id="Calendar">
