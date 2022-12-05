@@ -51,7 +51,7 @@ export default function MyModal() {
     }
     return (
         <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>+</Button>
       <Modal
         open={open}
         onClose={handleClose}
