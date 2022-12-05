@@ -1,21 +1,26 @@
-import React, { Component } from "react";
+import React, {
+    Component
+} from "react";
 import Modal from './Modal'
-
+import "./App.css"
+import {
+    IoIosAdd
+} from 'react-icons/io';
 const Calendar = () => {
 
 
-return (
-    <div>
+    return (
+        <div>
         <div class="divTable blueTable">
         <div class="divTableBody">
-        <div class="divTableRow">
-        <div ><Modal onClick="divTableCell"/>1</div>
-        <div class="divTableCell">2</div>
-        <div class="divTableCell">3</div>
-        <div class="divTableCell">4</div>
-        <div class="divTableCell">5</div>
-        <div class="divTableCell">6</div>
-        <div class="divTableCell">7</div>
+        <div class="divTableRow"></div>
+        <div ><button> <Modal/></button>1<div class="divTableCell"/></div>
+        <div ><button> <Modal/></button>2<div class="divTableCell"/></div>
+        <div ><button> <Modal/></button>3<div class="divTableCell"/></div>
+        <div ><button> <Modal/></button>4<div class="divTableCell"/></div>
+        <div ><button> <Modal/></button>5<div class="divTableCell"/></div>
+        <div ><button> <Modal/></button>6<div class="divTableCell"/></div>
+        <div ><button> <Modal/></button>7<div class="divTableCell"/></div>
         </div>
         <div class="divTableRow">
         <div class="divTableCell">8</div>
@@ -35,7 +40,7 @@ return (
         <div class="divTableCell">20</div>
         <div class="divTableCell">21</div>
         </div>
-        <div class="divTableRow">
+         <div class="divTableRow">
         <div class="divTableCell">22</div>
         <div class="divTableCell">23</div>
         <div class="divTableCell">24</div>
@@ -45,16 +50,14 @@ return (
         <div class="divTableCell">28</div>
         </div>
         <div class="divTableRow">
-        <div class="divTableCell">29</div>
+        <div clall="divTableCell"/>29</div>
         <div class="divTableCell">30</div>
         <div class="divTableCell">31</div>
         </div>
         </div>
         
-    </div>
-    </div>
 
-)
+    )
 }
-        
+
 export default Calendar
