@@ -1,41 +1,72 @@
-.App {
-  text-align: center;
+div.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
 }
-h1{
-  color: rgb(0, 255, 110);
+.divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
 }
-
-#Calendar {
-  height: 100%;
-  width: 80%;
-  margin: auto;
-  margin-top:50px;
-  margin-bottom: 50px;
-
+.divTable.blueTable .divTableBody .divTableCell {
+  font-size: 13px;
+  height: 15vh
 }
-
-.rbc-month-view{
-  flex-basis: 500px !important;
+.divTable.blueTable .divTableRow:nth-child(even) {
+  background: #D0E4F5;
 }
-
-.rbc-toolbar-label {
+.divTable.blueTable .divTableHeading {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+.divTable.blueTable .divTableHeading .divTableHead {
+  font-size: 15px;
   font-weight: bold;
-  font-size: 22px;
-  color: rgb(12, 12, 14)
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+.divTable.blueTable .divTableHeading .divTableHead:first-child {
+  border-left: none;
 }
 
-.rbc-date-cell {
-  color: rgb(12, 12, 13);
+.blueTable .tableFootStyle {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
 }
-
-.rbc-today {
-  background-color: rgb(181, 230, 210) !important;
+.blueTable .tableFootStyle {
+  font-size: 14px;
 }
-
-@media (max-width: 480px) {
-  .rbc-toolbar {
-    display: block !important;
-  }
+.blueTable .tableFootStyle .links {
+	 text-align: right;
 }
-
-
+.blueTable .tableFootStyle .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.blueTable.outerTableFooter {
+  border-top: none;
+}
+.blueTable.outerTableFooter .tableFootStyle {
+  padding: 3px 5px; 
+}
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
