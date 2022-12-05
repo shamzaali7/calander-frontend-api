@@ -10,14 +10,14 @@ const Calendar = () => {
         <div>
         <div class="divTable blueTable">
         <div class="divTableBody">
-        <div class="divTableRow"></div>
-        <div ><Modal><button/></Modal>1<div class="divTableCell"/></div>
-        <div ><Modal><button/></Modal>7<div class="divTableCell"/></div>
-        <div ><button> <Modal/></button>3<div class="divTableCell"/></div>
-        <div ><button> <Modal/></button>4<div class="divTableCell"/></div>
-        <div ><button> <Modal/></button>5<div class="divTableCell"/></div>
-        <div ><button> <Modal/></button>6<div class="divTableCell"/></div>
-        <div ><Modal><button/>click</Modal>7<div class="divTableCell"/></div>
+        <div class="divTableRow">
+        <div class="divTableCell">1</div>
+        <div class="divTableCell">2</div>
+        <div class="divTableCell">3</div>
+        <div class="divTableCell">4</div>
+        <div class="divTableCell">5</div>
+        <div class="divTableCell">6</div>
+        <div class="divTableCell">7</div>
         </div>
         <div class="divTableRow">
         <div class="divTableCell">8</div>
@@ -47,12 +47,13 @@ const Calendar = () => {
         <div class="divTableCell">28</div>
         </div>
         <div class="divTableRow">
-        <div clall="divTableCell"/>29</div>
+        <div class="divTableCell">29</div>
         <div class="divTableCell">30</div>
         <div class="divTableCell">31</div>
         </div>
         </div>
-        
+       </div>
+       </div>
 
     )
 }
