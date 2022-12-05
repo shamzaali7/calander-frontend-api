@@ -3,9 +3,6 @@ import React, {
 } from "react";
 import Modal from './Modal'
 import "./App.css"
-import {
-    IoIosAdd
-} from 'react-icons/io';
 const Calendar = () => {
 
 
@@ -14,13 +11,13 @@ const Calendar = () => {
         <div class="divTable blueTable">
         <div class="divTableBody">
         <div class="divTableRow"></div>
-        <div ><button> <Modal/></button>1<div class="divTableCell"/></div>
-        <div ><button> <Modal/></button>2<div class="divTableCell"/></div>
+        <div ><Modal><button/></Modal>1<div class="divTableCell"/></div>
+        <div ><Modal><button/></Modal>7<div class="divTableCell"/></div>
         <div ><button> <Modal/></button>3<div class="divTableCell"/></div>
         <div ><button> <Modal/></button>4<div class="divTableCell"/></div>
         <div ><button> <Modal/></button>5<div class="divTableCell"/></div>
         <div ><button> <Modal/></button>6<div class="divTableCell"/></div>
-        <div ><button> <Modal/></button>7<div class="divTableCell"/></div>
+        <div ><Modal><button/>click</Modal>7<div class="divTableCell"/></div>
         </div>
         <div class="divTableRow">
         <div class="divTableCell">8</div>

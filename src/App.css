@@ -28,7 +28,7 @@ div.blueTable {
   font-size: 15px;
   font-weight: bold;
   color: #FFFFFF;
-  border-left: 2px solid #D0E4F5;
+  /* border-left: 2px solid #D0E4F5; */
 }
 .divTable.blueTable .divTableHeading .divTableHead:first-child {
   border-left: none;
@@ -67,8 +67,15 @@ div.blueTable {
 /* DivTable.com */
 .divTable{ display: table; }
 .divTableRow,  { display: table-row; }
-.divTableHeading { display: table-header-group;}
-.divTableCell, .divTableHead{ display: table-cell;}
+.divTableHeading ,{ display: table-header-group;}
+.divTableCell, button, .divTableHead{ display: table-cell;}
 .divTableHeading { display: table-header-group;}
 .divTableFoot { display: table-footer-group;}
 .divTableBody, button, Modal{ display: table-row-group;}
+ button{
+  
+  display: flex;
+  flex-direction: row;
+
+  
+}
