@@ -75,7 +75,7 @@ div.blueTable {
 .divTableCell, .divTableHead{ display: table-cell;}
 .divTableHeading { display: table-header-group;}
 .divTableFoot { display: table-footer-group;}
-.divTableBody, { display: table-row-group;}
+.divTableBody{ display: table-row-group;}
 header{
   align-items: center;
   place-items: center;
