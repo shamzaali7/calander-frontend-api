@@ -27,10 +27,14 @@ export default function MyModal() {
       const [open, setOpen] = useState(false);
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);
-      const [taskValue, setTaskValue] = useState("");
+      const [taskValue, setTaskValue] = useState({
+        title: "",
+        isCompleted: "",
+        dayIndex: parseInt("")
+      });
       const [taskList, setTaskList] = useState([]);
     const handlInputChange = (event) => {
-        setTaskValue(event.target.value);
+        setTaskValue({ title: event.target.value});
 
     }
     const handleSubmit = (event) => {
@@ -40,7 +44,11 @@ export default function MyModal() {
 
         prevTaskValue.concat({ value: taskValue })
       );
-      setTaskValue("");
+      setTaskValue({
+        title: "",
+        isCompleted: "",
+        dayIndex: parseInt("")
+      });
     };
     
     
@@ -67,7 +75,7 @@ export default function MyModal() {
          <Box sx={{ ...style, width: 200 }}>
           <h2 id="parent-modal-title">Tasks</h2>
           <form onSubmit={handleSubmit}>
-            <input type="text" value={taskValue} onChange={handlInputChange} />
+              <input type="text" value={taskValue.title} onChange={handlInputChange} />
             <button onClick={handleSubmit}>save</button>
           </form>
         </Box>
@@ -86,7 +94,7 @@ export default function MyModal() {
                     onClick={handleCheckBoxClick.bind(null, index)}
                     className="strikethrough"
                   />
-                  {item.value}
+                  {item.title}
                   {item.isChecked}
                 </li>
               )
