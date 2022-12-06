@@ -12,7 +12,7 @@ div.blueTable {
 }
 .divTable.blueTable .divTableBody .divTableCell {
   font-size: 13px;
-  height: 20vh;
+  height: 15vh;
   width: 50vw;
 }
 .divTable.blueTable .divTableRow:nth-child(even) {
@@ -67,9 +67,26 @@ div.blueTable {
 }
 /* DivTable.com */
 .divTable{ display: table; }
-.divTableRow,  { display: table-row; }
-.divTableHeading ,{ display: table-header-group;}
+.divTableRow  { display: table-row; }
+.divTableHeading { display: table-header-group;}
 .divTableCell, .divTableHead{ display: table-cell;}
 .divTableHeading { display: table-header-group;}
 .divTableFoot { display: table-footer-group;}
 .divTableBody, { display: table-row-group;}
+header{
+  align-items: center;
+  place-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 40px;
+  z-index: 1;
+  background-color: #1C6EA4;
+  text-shadow: 0px 3px 3px rgba(188, 182, 182, 0.5), 2px 2px 2px rgba(166, 208, 242, 0.199);
+
+
+}
+RiAddCircleLine{
+  height: 5px;
+  width: 5px;
+  align-items: right;
+}

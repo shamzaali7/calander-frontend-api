@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import { RiAddCircleLine } from 'react-icons/ri';
+
 
 import './App.css'
 
@@ -35,9 +37,7 @@ export default function MyModal() {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        
       setTaskList(prevTaskValue =>
-
         prevTaskValue.concat({ value: taskValue })
       );
       setTaskValue("");
@@ -56,7 +56,7 @@ export default function MyModal() {
           
     return (
         <div>
-      <Button onClick={handleOpen}>add</Button>
+      <Button onClick={handleOpen}><RiAddCircleLine/></Button>
       <Modal
         open={open}
         onClose={handleClose}
