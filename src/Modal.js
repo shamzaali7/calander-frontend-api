@@ -78,20 +78,18 @@ export default function MyModal() {
             (item, index) =>
               item.value && (
                 <li>
-                 {/* after  */}
-                  <input
-                  
+                   <input
                     type="checkbox"
                     id='btn'
                     onClick={handleCheckBoxClick.bind(null, index)}
                     className="strikethrough"
-                  />
+                  /> 
                   {item.value}
                   {item.isChecked}
                 </li>
-              )
-          )}
-        </div> 
+               )
+         )}
+        </div>   
           
            
     

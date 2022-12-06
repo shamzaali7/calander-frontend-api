@@ -8,12 +8,15 @@ div.blueTable {
 }
 .divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
   border: 1px solid #AAAAAA;
-  padding: 3px 2px;
+  padding: 3px 2px;color: rgba(0,0,0,.6);
+  
 }
 .divTable.blueTable .divTableBody .divTableCell {
-  font-size: 13px;
+  font-size: 20px;
   height: 15vh;
   width: 50vw;
+  text-shadow: 3px 2px 3px rgba(255,255,255,.2);
+  text-align: left;
 }
 .divTable.blueTable .divTableRow:nth-child(even) {
   background: #D0E4F5;
@@ -86,7 +89,6 @@ header{
 
 }
 RiAddCircleLine{
-  height: 5px;
-  width: 5px;
   align-items: right;
+  margin-bottom: 40px;
 }
