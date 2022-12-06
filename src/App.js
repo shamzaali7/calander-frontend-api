@@ -9,7 +9,7 @@ import React from 'react';
 const App = () => {
   return (
     <div>
-      <h1>December</h1>
+      <header>December 2022</header>
       <Calendar />
     </div>
 

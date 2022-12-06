@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import { RiAddCircleLine } from 'react-icons/ri';
+
 
 import './App.css'
 
@@ -40,7 +42,7 @@ export default function MyModal() {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+      
       setTaskList([...taskList, taskValue]);
       console.log(taskList)
       setTaskValue({
@@ -48,7 +50,6 @@ export default function MyModal() {
         isCompleted: "",
         dayIndex: parseInt("")
       });
-    };
     
     
     const handleCheckBoxClick = (listnumber, event) => {
@@ -63,7 +64,7 @@ export default function MyModal() {
           
     return (
         <div>
-      <Button onClick={handleOpen}>add</Button>
+      <Button onClick={handleOpen}><RiAddCircleLine/></Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -85,9 +86,7 @@ export default function MyModal() {
             (item, index) =>
               item.title && (
                 <li>
-                 {/* after  */}
-                  <input
-                  
+                   <input
                     type="checkbox"
                     id='btn'
                     onClick={handleCheckBoxClick.bind(null, index)}
@@ -96,9 +95,9 @@ export default function MyModal() {
                   {item.title}
                   {item.isChecked}
                 </li>
-              )
-          )}
-        </div> 
+               )
+         )}
+        </div>   
           
            
     
