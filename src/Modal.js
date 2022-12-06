@@ -35,15 +35,14 @@ export default function MyModal() {
       const [taskList, setTaskList] = useState([]);
     const handlInputChange = (event) => {
         setTaskValue({ title: event.target.value});
+        console.log(taskValue)
 
     }
     const handleSubmit = (event) => {
         event.preventDefault();
         
-      setTaskList(prevTaskValue =>
-
-        prevTaskValue.concat({ value: taskValue })
-      );
+      setTaskList([...taskList, taskValue]);
+      console.log(taskList)
       setTaskValue({
         title: "",
         isCompleted: "",
@@ -84,7 +83,7 @@ export default function MyModal() {
           
           {taskList.map(
             (item, index) =>
-              item.value && (
+              item.title && (
                 <li>
                  {/* after  */}
                   <input
