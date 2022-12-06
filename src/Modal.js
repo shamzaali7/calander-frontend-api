@@ -17,10 +17,14 @@ const style = {
   width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
-  boxShadow: 24,
+  color: '#1C6EA4',
+  
   pt: 2,
   px: 4,
   pb: 3,
+  "webkit-box-shadow": "5px 5px 15px 5px #000000", 
+  "box-shadow": "5px 5px 15px 5px #000000",
+  "text-align": "center",
 };
 
 export default function MyModal() {
@@ -50,7 +54,7 @@ export default function MyModal() {
         isCompleted: "",
         dayIndex: parseInt("")
       });
-    
+    }
     
     const handleCheckBoxClick = (listnumber, event) => {
       setTaskList(taskList.map(
@@ -64,7 +68,7 @@ export default function MyModal() {
           
     return (
         <div>
-      <Button onClick={handleOpen}><RiAddCircleLine/></Button>
+      <Button onClick={handleOpen}><RiAddCircleLine size={20} id="reactButton"/></Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -72,11 +76,11 @@ export default function MyModal() {
         form={"input"}
         type="text"
         onSubmit={handleSubmit}>
-         <Box sx={{ ...style, width: 200 }}>
-          <h2 id="parent-modal-title">Tasks</h2>
+         <Box sx={{ ...style, width: 400, height: 180, opacity: .8, "background-color": "black", border: "#1C6EA4 solid 1px"}}>
+          <h2 id="parent-modal-title">Add to Task List</h2>
           <form onSubmit={handleSubmit}>
-              <input type="text" value={taskValue.title} onChange={handlInputChange} />
-            <button onClick={handleSubmit}>save</button>
+              <input sx={{ ...style, "border-color": "black",  }} type='text' placeholder="enter task here..." value={taskValue.title} onChange={handlInputChange} />
+            <button onClick={handleSubmit}>Save</button>
           </form>
         </Box>
       </Modal>
