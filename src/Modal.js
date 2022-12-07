@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { RiAddCircleLine } from 'react-icons/ri';
+import axios from 'axios';
+
 
 
 import './App.css'
@@ -19,69 +21,94 @@ const style = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   color: '#1C6EA4',
-  
+
   pt: 2,
   px: 4,
   pb: 3,
-  "webkit-box-shadow": "5px 5px 15px 5px #000000", 
+  "webkit-box-shadow": "5px 5px 15px 5px #000000",
   "box-shadow": "5px 5px 15px 5px #000000",
   "text-align": "center",
 };
 
 export default function MyModal() {
-   
-   
-      const [open, setOpen] = useState(false);
-      const handleOpen = () => setOpen(true);
-      const handleClose = () => setOpen(false);
-      const [taskValue, setTaskValue] = useState({
-        title: "",
-        isCompleted: "",
-        dayIndex: parseInt("")
-      });
-      const [taskList, setTaskList] = useState([]);
-    const handlInputChange = (event) => {
-        setTaskValue(
-          { title: event.target.value,
-            isCompleted: "false",
-            dayIndex: event.target.index
-          }
-          );
-        console.log(taskValue)
 
-    }
-    const handleSubmit = (event) => {
-        event.preventDefault();
-      
-      setTaskList([...taskList, taskValue]);
-      console.log(taskList)
-      setTaskValue({
-        title: "",
-        isCompleted: "",
-        dayIndex: parseInt("")
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [taskValue, setTaskValue] = useState({
+    title: "",
+    isCompleted: "false",
+    dayIndex: ""
+  });
+  const [taskList, setTaskList] = useState([]);
+  const handleTitle = (event) => {
+    setTaskValue({ ...taskValue, title: event.target.value, isCompleted: "false" }); console.log(taskValue)
+  }
+  const handleDay = (event) => {
+    setTaskValue({ ...taskValue, dayIndex: event.target.value }); console.log(taskValue)
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // setTaskList([...taskList, taskValue]);
+    createTask()
+    console.log(taskValue)
+    setTaskValue({
+      title: "",
+      isCompleted: "false",
+      dayIndex: ""
+    });
+  }
+
+  const handleCheckBoxClick = (listnumber, event) => {
+    setTaskList(taskList.map(
+      (item, index) => {
+        if (item.isCompleted === "false") {
+          item.isCompleted = "true"
+        } else {
+          item.isCompleted = "false"
+        }
+        console.log(item)
+        return {
+          ...item,
+          // isChecked: index === listnumber ? event.currentTarget.checked : item.isChecked
+        }
+      }
+
+    ))
+  }
+
+  function createTask() {
+    // const options3 = {
+  
+    const params = taskValue
+    console.log(params)
+    axios.post('https://calendar-backend-seir-10.fly.dev/api/task', params, {
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-    }
-    
-    const handleCheckBoxClick = (listnumber, event) => {
-      setTaskList(taskList.map(
-          (item, index) =>
-            {
-              if(item.isCompleted === "false"){
-                item.isCompleted = "true"
-              }else{
-                item.isCompleted = "false"
-              }
-          console.log(item)
-              return{
-              ...item,
-              // isChecked: index === listnumber ? event.currentTarget.checked : item.isChecked
-            }}
-        
-      ))}
-          // item.isCompleted = True
-    return (
-        <div>
-      <Button onClick={handleOpen}><RiAddCircleLine size={20} id="reactButton"/></Button>
+  }
+
+
+
+
+
+
+
+
+
+
+  // item.isCompleted = True
+  return (
+    <div>
+      <Button onClick={handleOpen}><RiAddCircleLine size={20} id="reactButton" /></Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -89,36 +116,38 @@ export default function MyModal() {
         form={"input"}
         type="text"
         onSubmit={handleSubmit}>
-         <Box sx={{ ...style, width: 400, height: 180, opacity: .8, "background-color": "black", border: "#1C6EA4 solid 1px"}}>
+        <Box sx={{ ...style, width: 400, height: 180, opacity: .8, "background-color": "black", border: "#1C6EA4 solid 1px" }}>
           <h2 id="parent-modal-title">Add to Task List</h2>
           <form onSubmit={handleSubmit}>
-              <input sx={{ ...style, "border-color": "black",  }} type='text' placeholder="enter task here..." value={taskValue.title} onChange={handlInputChange} />
+            <input sx={{ ...style, "border-color": "black", }} type='text' placeholder="enter task here..." name="title" value={taskValue.title} onChange={handleTitle} />
+            <input type="text" placeholder="enter day here..." name="dayIndex" value={taskValue.dayIndex} onChange={handleDay} />
             <button onClick={handleSubmit}>Save</button>
+            \
           </form>
         </Box>
       </Modal>
       <div>
-          
-          {taskList.map(
-            (item, index) =>
-              item.title && (
-                <li>
-                   <input
-                    type="checkbox"
-                    id='btn'
-                    onClick={handleCheckBoxClick.bind(null, index)}
-                    className="strikethrough"
-                  />
-                  {item.title}
-                  {item.isChecked}
-                </li>
-               )
-         )}
-        </div>   
-          
-           
-    
-      
+
+        {taskList.map(
+          (item, index) =>
+            item.title && (
+              <li>
+                <input
+                  type="checkbox"
+                  id='btn'
+                  onClick={handleCheckBoxClick.bind(null, index)}
+                  className="strikethrough"
+                />
+                {item.title}
+                {item.isChecked}
+              </li>
+            )
+        )}
+      </div>
+
+
+
+
     </div>
-    );
+  );
 }
