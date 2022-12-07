@@ -1,66 +1,86 @@
 import React, {
-    Component
+    Component, useEffect, useState
 } from "react";
 import MyModal from './Modal'
 import "./App.css"
-
+import axios from "axios"
 const Calendar = () => {
+    const [days, setDays] = useState([])
+    const [tasks, setTasks] = useState([])
+    const options = {
+        method: 'GET',
+        url: 'https://calendar-backend-seir-10.fly.dev/api/date'
+
+    };
+
+    async function getDates() {
+        await axios.request(options)
+            .then((res) => {
+                setDays(res.data)
+                console.log(res.data)
+
+            })
+
+    }
+    // console.log(days)
+    // console.log(tasks)
+    days.sort((a, b) => {
+        return a.day - b.day;
+    })
+    useEffect(() => {
+        getDates()
+        getTasks()
+
+    }, [])
 
 
-    
+    const options2 = {
+        method: 'GET',
+        url: 'https://calendar-backend-seir-10.fly.dev/api/task'
+
+    };
+
+    async function getTasks() {
+        await axios.request(options2)
+            .then((res) => {
+                setTasks(res.data)
+                console.log(res.data)
+
+            })
+
+    }
+
+
+
+
+
+
+
+
+
     return (
         <div className="calendar" >
-        
-        <div className="divTable blueTable">
-        <div class="divTableBody">
-        <div class="divTableRow">
-        <div class="divTableCell">1<MyModal><button/></MyModal></div>
-        <div class="divTableCell">2<MyModal><button/></MyModal></div>
-        <div class="divTableCell">3<MyModal><button/></MyModal></div>
-        <div class="divTableCell">4<MyModal><button/></MyModal></div>
-        <div class="divTableCell">5<MyModal><button/></MyModal></div>
-        <div class="divTableCell">6<MyModal><button/></MyModal></div>
-        <div class="divTableCell">7<MyModal><button/></MyModal></div>
-        </div>
-        <div class="divTableRow">
-        <div class="divTableCell">8<MyModal><button/></MyModal></div>
-        <div class="divTableCell">9<MyModal><button/></MyModal></div>
-        <div class="divTableCell">10<MyModal><button/></MyModal></div>
-        <div class="divTableCell">11<MyModal><button/></MyModal></div>
-        <div class="divTableCell">12<MyModal><button/></MyModal></div>
-        <div class="divTableCell">13<MyModal><button/></MyModal></div>
-        <div class="divTableCell">14<MyModal><button/></MyModal></div>
-        </div>
-        <div class="divTableRow">
-        <div class="divTableCell">15<MyModal><button/></MyModal></div>
-        <div class="divTableCell">16<MyModal><button/></MyModal></div>
-        <div class="divTableCell">17<MyModal><button/></MyModal></div>
-        <div class="divTableCell">18<MyModal><button/></MyModal></div>
-        <div class="divTableCell">19<MyModal><button/></MyModal></div>
-        <div class="divTableCell">20<MyModal><button/></MyModal></div>
-        <div class="divTableCell">21<MyModal><button/></MyModal></div>
-        </div>
-         <div class="divTableRow">
-        <div class="divTableCell">22<MyModal><button/></MyModal></div>
-        <div class="divTableCell">23<MyModal><button/></MyModal></div>
-        <div class="divTableCell">24<MyModal><button/></MyModal></div>
-        <div class="divTableCell">25<MyModal><button/></MyModal></div>
-        <div class="divTableCell">26<MyModal><button/></MyModal></div>
-        <div class="divTableCell">27<MyModal><button/></MyModal></div>
-        <div class="divTableCell">28<MyModal><button/></MyModal></div>
-        </div>
-        <div class="divTableRow">
-        <div class="divTableCell">29<MyModal><button/></MyModal></div>
-        <div class="divTableCell">30<MyModal><button/></MyModal></div>
-        <div class="divTableCell">31<MyModal><button/></MyModal></div>
-        </div> 
-        </div>
-       </div>
-      
-      
+            {days.map(day => {
+                let result = []
+                tasks.forEach(item => {
+                    if (item.day == day._id) result.push(item)
+                })
+                console.log(result)
+                return (
+                    <div clasname="calDay">
+                        {day.day}
+                        {result.map(x => {
+                            return (x.title)
+                        })}
+
+                    </div>
+                )
+            })}
+            <MyModal><button /></MyModal>
         </div>
 
-    )}
+    )
+}
 
 
 export default Calendar
