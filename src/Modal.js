@@ -8,6 +8,7 @@ import { RiAddCircleLine } from 'react-icons/ri';
 
 import './App.css'
 
+
 // https://mui.com/material-ui/react-modal/
 const style = {
   position: 'absolute',
@@ -40,7 +41,12 @@ export default function MyModal() {
       });
       const [taskList, setTaskList] = useState([]);
     const handlInputChange = (event) => {
-        setTaskValue({ title: event.target.value});
+        setTaskValue(
+          { title: event.target.value,
+            isCompleted: "false",
+            dayIndex: event.target.index
+          }
+          );
         console.log(taskValue)
 
     }
@@ -59,13 +65,20 @@ export default function MyModal() {
     const handleCheckBoxClick = (listnumber, event) => {
       setTaskList(taskList.map(
           (item, index) =>
-            {return{
+            {
+              if(item.isCompleted === "false"){
+                item.isCompleted = "true"
+              }else{
+                item.isCompleted = "false"
+              }
+          console.log(item)
+              return{
               ...item,
-              isChecked: index === listnumber ? event.currentTarget.checked : item.isChecked
+              // isChecked: index === listnumber ? event.currentTarget.checked : item.isChecked
             }}
         
       ))}
-          
+          // item.isCompleted = True
     return (
         <div>
       <Button onClick={handleOpen}><RiAddCircleLine size={20} id="reactButton"/></Button>
