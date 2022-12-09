@@ -5,11 +5,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { RiAddCircleLine } from 'react-icons/ri';
 import axios from 'axios';
-
-
-
 import './App.css'
-
 
 // https://mui.com/material-ui/react-modal/
 const style = {
@@ -32,7 +28,6 @@ const style = {
 
 export default function MyModal() {
 
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -50,6 +45,7 @@ export default function MyModal() {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
+    setOpen(false)
     // setTaskList([...taskList, taskValue]);
     createTask()
     console.log(taskValue)
@@ -78,12 +74,12 @@ export default function MyModal() {
     ))
   }
 
-  function createTask() {
+  async function createTask() {
     // const options3 = {
   
     const params = taskValue
     console.log(params)
-    axios.post('https://calendar-backend-seir-10.fly.dev/api/task', params, {
+    await axios.post('https://calendar-backend-seir-10.fly.dev/api/task', params, {
       headers: {
         'content-type': 'application/json',
       },
@@ -95,15 +91,6 @@ export default function MyModal() {
         console.log(error);
       });
   }
-
-
-
-
-
-
-
-
-
 
   // item.isCompleted = True
   return (
@@ -118,10 +105,10 @@ export default function MyModal() {
         onSubmit={handleSubmit}>
         <Box sx={{ ...style, width: 400, height: 180, opacity: .8, "background-color": "black", border: "#1C6EA4 solid 1px" }}>
           <h2 id="parent-modal-title">Add to Task List</h2>
-          <form onSubmit={handleSubmit}>
+          <form>
             <input sx={{ ...style, "border-color": "black", }} type='text' placeholder="enter task here..." name="title" value={taskValue.title} onChange={handleTitle} />
             <input type="text" placeholder="enter day here..." name="dayIndex" value={taskValue.dayIndex} onChange={handleDay} />
-            <button onClick={handleSubmit}>Save</button>
+            <button>Save</button>
             \
           </form>
         </Box>
