@@ -76,8 +76,7 @@ const Calendar = () => {
                     </div>
                 )
             })}
-            <MyModal><button /></MyModal>
-            <div><button onClick={reload}>refresh page</button></div>
+            <div><MyModal><button /></MyModal><button onClick={reload}>refresh page</button></div>
         </div>
 
     )
