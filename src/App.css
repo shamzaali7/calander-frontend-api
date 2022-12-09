@@ -157,5 +157,22 @@ header {
   border: 1px solid;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+ }
+
+ div .task-titles{
+  margin-left: 5px;
+  border: none;
+ }
+
+ div .day-display{
+  margin-left: 2px;
+  border: none;
+ }
+ .div-display{
+  margin-top: 10px;
+ }
+
+ .calDay{
+  display:flex;
+  flex-direction: column;
  }
