@@ -26,7 +26,7 @@ const style = {
   "text-align": "center",
 };
 
-export default function MyModal() {
+export default function MyModal({ addTask}) {
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -75,22 +75,15 @@ export default function MyModal() {
   }
 
   async function createTask() {
-    // const options3 = {
-  
-    const params = taskValue
-    console.log(params)
-    await axios.post('https://calendar-backend-seir-10.fly.dev/api/task', params, {
-      headers: {
-        'content-type': 'application/json',
-      },
-    })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+    const params = taskValue;
+    const response = await axios.post('https://calendar-backend-seir-10.fly.dev/api/task', params, {
+        headers: {
+            'content-type': 'application/json',
+        },
+    });
+    addTask(response.data);
+    handleClose();
+}
 
   // item.isCompleted = True
   return (
